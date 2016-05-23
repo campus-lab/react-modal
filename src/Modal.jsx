@@ -15,14 +15,16 @@ class ModalCore extends React.Component {
     }
 
     componentDidMount() {
+        // console.info('modal - componentDidMount');
         this._scrollPositionSave();
         this._bodyClassSet();
-        this._mutationObserve();
         window.addEventListener('resize', this._handleResize);
         this._handleResize();
+        this._mutationObserve();
     }
 
     componentWillUnmount() {
+        // console.info('modal - componentWillUnmount');
         this._bodyClassUnset();
         this._scrollPositionLoad();
         this._mutationDisconnect();
@@ -30,6 +32,7 @@ class ModalCore extends React.Component {
     }
 
     render() {
+        // console.info('modal - render');
         const props = this.props;
 
         let title;
@@ -52,8 +55,8 @@ class ModalCore extends React.Component {
 
     _mutationObserve() {
         // console.info('modal - _mutationObserve');
-        let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-        let modal = document.querySelector('.modal');
+        const MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+        const modal = document.querySelector('.modal');
 
         this.mutation = new MutationObserver((mutations) => {
             this._mutationObserved();
