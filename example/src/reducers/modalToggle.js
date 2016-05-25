@@ -8,7 +8,7 @@ const initialState = {
 const modalToggle = (state = initialState, action) => {
     switch (action.type) {
     case 'MODAL_TOGGLE':
-        console.info('reducer modalToggle:', state, action);
+        // console.info('reducer modalToggle:', state, action);
         let s;
 
         if (!state.id || state.id === action.id) { // first toggle / same modal: toggle
@@ -24,7 +24,7 @@ const modalToggle = (state = initialState, action) => {
             open: s
         });
     default:
-        console.info('reducer modalToggle DEFAULT:', state);
+        // console.info('reducer modalToggle DEFAULT:', state);
         return state;
     }
 };

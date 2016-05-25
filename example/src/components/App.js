@@ -11,13 +11,11 @@ let App = ({dispatch}) => {
     return (
         <div>
             <div className="examples">
-                <h3>examples</h3>
-                <div className="has-flyout">
-                    <button type="button" className="button-primary" onClick={e => {dispatch(modalToggle('modal-foobar'))}}>try me</button>
-                    <Modal id="modal-foobar" title="hello world">
-                        hello
-                    </Modal>
-                </div>
+                <h3>example</h3>
+                <button type="button" className="button-primary" onClick={e => {dispatch(modalToggle('modal-foobar'))}}>try me</button>
+                <Modal id="modal-foobar" title="hello world">
+                    <div>hello</div>
+                </Modal>
             </div>
         </div>
     );
