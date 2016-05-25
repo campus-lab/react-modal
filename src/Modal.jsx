@@ -33,15 +33,13 @@ class ModalCore extends React.Component {
 
     render() {
         // console.info('modal - render');
-        const props = this.props;
-
         let title;
-        if (props.title) {
-            title = <div className="modal__header"><h2 className="modal__title">{props.title}</h2></div>
+        if (this.props.title) {
+            title = <div className="modal__header"><h2 className="modal__title">{this.props.title}</h2></div>
         }
 
         return (
-            <div className={`modal ${props.id}`} data-modal="close">
+            <div className={`modal ${this.props.id}`} data-modal="close">
                 <div className="modal__wrapper">
                     {title}
                     <div className="modal__body">

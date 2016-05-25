@@ -8,44 +8,44 @@ class ModalWrapper extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log(props);
-
         // pre-binding
         this._handleClick = this._handleClick.bind(this);
         this._handleKeyDown = this._handleKeyDown.bind(this);
     }
 
     componentWillUnmount() {
-        this._toggleEvents();
+        this._unsetClickEvent();
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.open === this.props.open) return false;
         if (!this.props.onWindowClick) return false;
-        this._toggleEvents();
+        this._setClickEvent();
     }
 
     render() {
-        this._toggleEvents();
+        this._setClickEvent();
         if (!this.props.open) return null;
         return <Modal {...this.props} data={this.props.data} />;
     }
 
-    _toggleEvents() {
-        if (this.props.open) {
-            setTimeout(() => {
-                let modal = document.querySelector('.modal');
-                if (modal) {
-                    modal.addEventListener('click', this._handleClick);
-                    window.addEventListener('keydown', this._handleKeyDown);
-                }
-            }, 0);
-        } else {
+    _setClickEvent() {
+        // console.info('flyout - _setClickEvent');
+        setTimeout(() => {
             let modal = document.querySelector('.modal');
             if (modal) {
-                modal.removeEventListener('click', this._handleClick);
+                modal.addEventListener('click', this._handleClick);
                 window.addEventListener('keydown', this._handleKeyDown);
             }
+        }, 0);
+    }
+
+    _unsetClickEvent() {
+        // console.info('flyout - _unsetClickEvent');
+        let modal = document.querySelector('.modal');
+        if (modal) {
+            modal.removeEventListener('click', this._handleClick);
+            window.addEventListener('keydown', this._handleKeyDown);
         }
     }
 
@@ -79,12 +79,13 @@ class ModalWrapper extends React.Component {
 
 ModalWrapper.propTypes = {
     id: React.PropTypes.string.isRequired,
-    options: React.PropTypes.object
+    title: React.PropTypes.string,
+    open: React.PropTypes.bool
 };
 
 ModalWrapper.defaultProps = {
-    id: null,
-    options: null
+    title: '',
+    open: false
 };
 
 export default ModalWrapper;
