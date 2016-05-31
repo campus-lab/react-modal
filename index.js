@@ -1,1 +1,1 @@
-module.exports = require("./dist/FlyoutWrapper");
+module.exports = require("./dist/ModalWrapper");
