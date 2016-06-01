@@ -3,6 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
+import Closest from '@aneves/js-closest';
 
 class ModalWrapper extends React.Component {
     constructor(props) {
@@ -50,7 +51,7 @@ class ModalWrapper extends React.Component {
     }
 
     _handleClick(e) {
-        const aTrigger = this._closest(e.target, 'tag', 'a');
+        const aTrigger = Closest(e.target, 'tag', 'a');
 
         if (e.target.getAttribute('data-modal') === 'close') this.props.onWindowClick();
         if (aTrigger && aTrigger.getAttribute('data-modal') === 'keepopen') return false;
@@ -59,21 +60,6 @@ class ModalWrapper extends React.Component {
 
     _handleKeyDown(e) {
         if (e.keyCode === 27) this.close();
-    }
-
-    _closest(el, findBy, findValue) {
-        if (!el) return false;
-
-        let value;
-
-        if (el.tagName.toLowerCase() === 'body') return null;
-
-        if (findBy === 'class') value = el.className;
-        if (findBy === 'id') value = el.id;
-        if (findBy === 'tag') value = el.tagName.toLowerCase();
-
-        if (value === findValue) return el; // found
-        return this._closest(el.parentNode, findBy, findValue); // not found, recurse
     }
 }
 
