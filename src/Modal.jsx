@@ -87,9 +87,9 @@ class ModalCore extends React.Component {
         let offset = 100;
 
         if (windowHeight - offset < modalHeight) {
-            modal.style.alignItems = 'flex-start';
+            if (modal.style.alignItems !== 'flex-start') modal.style.alignItems = 'flex-start';
         } else {
-            modal.style.alignItems = 'center';
+            if (modal.style.alignItems !== 'center') modal.style.alignItems = 'center';
         }
     }
 
