@@ -4,8 +4,6 @@ MODAL React Component
 
 + easy to use
 + responsive
-+ pre-defined styles
-+ customizable
 
 
 
@@ -15,7 +13,6 @@ MODAL React Component
 + [installation](#installation)
 + [how it works](#how-it-works)
 + [usage](#usage)
-+ [customization](#customization)
 
 
 
@@ -65,54 +62,16 @@ The usage will depend on your projects architecture but will be something along 
 
 
 ```html
-<button onClick={e => {dispatch(modalToggle('modal-example'))}}>ModalToggle</button>
-<Modal id="modal-example" title="foobar">
+<button onClick={e => {dispatch(modalToggle('modal-foobar'))}}>ModalToggle</button>
+<Modal id="modal-foobar" title="foobar">
     <div>(...)</div>
 </Modal>
 ```
 
 ### Props
 
-You can pass various options as an object in the Flyout props `<Flyout options={{}}>`
-
 + **id**: (string, required) modal id
++ **open**: (bool) opens the modal if true
 + **title**: (string) sets a title
-
-### Passing a data object from trigget to modal
-
-You may eventually need to have a modal triggered from a remote trigger which has some data that the modal needs. In that case just pass it... ... ...
-
-
-
-## CUSTOMIZATION
-
-### Styles
-
-Styles are available as SCSS and use the BEM naming convention.
-Customization:
-
-```css
-// override default variables
-
-$f_z_index_flyout: (...);
-$f_z_index_flyout--dropdown: (...);
-
-$f_font_size: (...);
-$f_font_size_tooltip: (...);
-$f_font_size_icon: (...);
-
-$f_color_light: (...);
-$f_color_dark: (...);
-$f_color_tooltip: (...);
-$f_color_border: (...);
-
-$f_border_radius: (...);
-
-// import original styles
-
-@import '~@aneves/react-flyout/dist/flyout';
-
-// define your styles
-
-(...)
-```
++ **onModalClose**: (func) called only when the modal is closed by typing ESC, clicking 'X', or clicking the backdrop
++ **onModalUnmount**: (func) called on componentWillUnmount
