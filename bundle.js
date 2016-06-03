@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3622352949b601af1771"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aa06fd98e5a6aae94101"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8004,7 +8004,7 @@
 	exports.i(__webpack_require__(191), "");
 	
 	// module
-	exports.push([module.id, "/* skeleton resets */\n\nhtml { font-size: 100%; }\nbody { font-size: 1rem; }\nh2 { font-size: 2.5rem; }\n\n/* defaults */\n\nbody {\n    min-width: 280px;\n    padding: 75px 20px;\n    text-align: center;\n}\n\nbody > img {\n    border-radius: 20px;\n    transform: rotate(-5deg);\n}\n\na {\n    display: block;\n    text-decoration: none;\n}\n\np {\n    margin-bottom: 1.2rem;\n}\n\n.examples {\n    margin: 50px 0 75px;\n}\n\nbutton {\n    margin: 0;\n    padding: 0 1rem;\n    background: white;\n}\n\n/* modal */\n\n.modal-foobar .modal__wrapper {\n    width: 500px;\n}", ""]);
+	exports.push([module.id, "/* skeleton resets */\n\nhtml { font-size: 100%; }\nbody { font-size: 1rem; }\nh1 { font-size: 3.5rem; }\nh1 { margin: 0; }\nh2 { font-size: 2.5rem; }\nh3 { font-size: 2.5rem; }\n\n/* defaults */\n\nbody {\n    min-width: 280px;\n    padding: 75px 20px;\n    text-align: center;\n}\n\nbody > img {\n    border-radius: 20px;\n    transform: rotate(-5deg);\n}\n\na {\n    display: block;\n    text-decoration: none;\n}\n\np {\n    margin-bottom: 1.2rem;\n}\n\n.examples {\n    margin: 50px 0 75px;\n}\n\nbutton {\n    margin: 0;\n    padding: 0 1rem;\n    background: white;\n}\n\n/* modal */\n\n.modal-foobar .modal__wrapper {\n    width: 500px;\n}", ""]);
 	
 	// exports
 
