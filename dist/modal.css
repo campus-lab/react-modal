@@ -33,6 +33,7 @@
     position: absolute;
     top: -4px;
     right: 8px;
+    color: white;
     line-height: 1;
     font-size: 40px;
     font-style: initial;
@@ -51,4 +52,6 @@
       min-height: 100%;
       margin: 0;
       border: 0;
-      border-radius: 0; } }
+      border-radius: 0; }
+    .modal .modal__close {
+      color: #444; } }

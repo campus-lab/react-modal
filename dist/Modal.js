@@ -41,15 +41,17 @@ var ModalCore = function (_React$Component) {
     _createClass(ModalCore, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            // console.info('modal - componentDidMount');
             this._scrollPositionSave();
             this._bodyClassSet();
-            this._mutationObserve();
             window.addEventListener('resize', this._handleResize);
             this._handleResize();
+            this._mutationObserve();
         }
     }, {
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
+            // console.info('modal - componentWillUnmount');
             this._bodyClassUnset();
             this._scrollPositionLoad();
             this._mutationDisconnect();
@@ -58,24 +60,23 @@ var ModalCore = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var props = this.props;
-
+            // console.info('modal - render');
             var title = void 0;
-            if (props.title) {
+            if (this.props.title) {
                 title = _react2.default.createElement(
                     'div',
                     { className: 'modal__header' },
                     _react2.default.createElement(
                         'h2',
                         { className: 'modal__title' },
-                        props.title
+                        this.props.title
                     )
                 );
             }
 
             return _react2.default.createElement(
                 'div',
-                { className: 'modal ' + props.id, 'data-modal': 'close' },
+                { className: 'modal ' + this.props.id, 'data-modal': 'close' },
                 _react2.default.createElement(
                     'div',
                     { className: 'modal__wrapper' },
@@ -136,9 +137,9 @@ var ModalCore = function (_React$Component) {
             var offset = 100;
 
             if (windowHeight - offset < modalHeight) {
-                modal.style.alignItems = 'flex-start';
+                if (modal.style.alignItems !== 'flex-start') modal.style.alignItems = 'flex-start';
             } else {
-                modal.style.alignItems = 'center';
+                if (modal.style.alignItems !== 'center') modal.style.alignItems = 'center';
             }
         }
     }, {

@@ -16,9 +16,13 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Modal = require('Modal');
+var _Modal = require('./Modal');
 
 var _Modal2 = _interopRequireDefault(_Modal);
+
+var _jsClosest = require('@aneves/js-closest');
+
+var _jsClosest2 = _interopRequireDefault(_jsClosest);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46,72 +50,71 @@ var ModalWrapper = function (_React$Component) {
     _createClass(ModalWrapper, [{
         key: 'componentWillUnmount',
         value: function componentWillUnmount() {
-            this._toggleEvents();
+            // console.info('modal - componentWillUnmount');
+            this._unsetClickEvent();
+            if (this.props.onModalUnmount) this.props.onModalUnmount();
         }
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate(prevProps, prevState) {
+            // console.info('modal - componentDidUpdate');
             if (prevProps.open === this.props.open) return false;
             if (!this.props.onWindowClick) return false;
-            this._toggleEvents();
+            this._setClickEvent();
         }
     }, {
         key: 'render',
         value: function render() {
-            this._toggleEvents();
+            // console.info('modal - render');
+            this._setClickEvent();
             if (!this.props.open) return null;
             return _react2.default.createElement(_Modal2.default, _extends({}, this.props, { data: this.props.data }));
         }
     }, {
-        key: '_toggleEvents',
-        value: function _toggleEvents() {
+        key: '_setClickEvent',
+        value: function _setClickEvent() {
             var _this2 = this;
 
-            if (this.props.open) {
-                setTimeout(function () {
-                    var modal = document.querySelector('.modal');
-                    if (modal) {
-                        modal.addEventListener('click', _this2._handleClick);
-                        window.addEventListener('keydown', _this2._handleKeyDown);
-                    }
-                }, 0);
-            } else {
+            // console.info('modal - _setClickEvent');
+            setTimeout(function () {
                 var modal = document.querySelector('.modal');
                 if (modal) {
-                    modal.removeEventListener('click', this._handleClick);
-                    window.addEventListener('keydown', this._handleKeyDown);
+                    modal.addEventListener('click', _this2._handleClick);
+                    window.addEventListener('keydown', _this2._handleKeyDown);
                 }
+            }, 0);
+        }
+    }, {
+        key: '_unsetClickEvent',
+        value: function _unsetClickEvent() {
+            // console.info('modal - _unsetClickEvent');
+            var modal = document.querySelector('.modal');
+            if (modal) {
+                modal.removeEventListener('click', this._handleClick);
+                window.addEventListener('keydown', this._handleKeyDown);
             }
         }
     }, {
         key: '_handleClick',
         value: function _handleClick(e) {
-            var aTrigger = this._closest(e.target, 'tag', 'a');
+            // console.info('modal - _handleClick');
+            var aTrigger = (0, _jsClosest2.default)(e.target, 'tag', 'a');
 
-            if (e.target.getAttribute('data-modal') === 'close') this.props.onWindowClick();
+            if (e.target.getAttribute('data-modal') === 'close') this._close();
             if (aTrigger && aTrigger.getAttribute('data-modal') === 'keepopen') return false;
             if (aTrigger) this.props.onWindowClick();
         }
     }, {
         key: '_handleKeyDown',
         value: function _handleKeyDown(e) {
-            if (e.keyCode === 27) this.close();
+            // console.info('modal - _handleKeyDown');
+            if (e.keyCode === 27) this._close();
         }
     }, {
-        key: '_closest',
-        value: function _closest(el, findBy, findValue) {
-            if (!el) return false;
-
-            var value = void 0;
-
-            if (el.tagName.toLowerCase() === 'body') return null;
-
-            if (findBy === 'class') value = el.className;
-            if (findBy === 'id') value = el.id;
-            if (findBy === 'tag') value = el.tagName.toLowerCase();
-
-            if (value === findValue) return el; // found
-            return this._closest(el.parentNode, findBy, findValue); // not found, recurse
+        key: '_close',
+        value: function _close() {
+            this.props.onWindowClick();
+            if (this.props.onModalClose) this.props.onClose();
         }
     }]);
 
@@ -120,12 +123,17 @@ var ModalWrapper = function (_React$Component) {
 
 ModalWrapper.propTypes = {
     id: _react2.default.PropTypes.string.isRequired,
-    options: _react2.default.PropTypes.object
+    title: _react2.default.PropTypes.string,
+    open: _react2.default.PropTypes.bool,
+    onModalClose: _react2.default.PropTypes.func,
+    onModalUnmount: _react2.default.PropTypes.func
 };
 
 ModalWrapper.defaultProps = {
-    id: null,
-    options: null
+    title: null,
+    open: false,
+    onModalClose: null,
+    onModalUnmount: null
 };
 
 exports.default = ModalWrapper;

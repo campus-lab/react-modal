@@ -6,9 +6,7 @@
 
 html { font-size: 100%; }
 body { font-size: 1rem; }
-h1 { font-size: 3.5rem; }
-h1 { margin: 0; }
-h3 { font-size: 2.5rem; }
+h2 { font-size: 2.5rem; }
 
 /* defaults */
 
@@ -42,66 +40,8 @@ button {
     background: white;
 }
 
-button + button {
-    margin-left: 4px;
+/* modal */
+
+.modal-foobar .modal__wrapper {
+    width: 500px;
 }
-
-/* flyouts */
-
-.flyout-foobar0 {
-    width: 190px;
-    text-align: center;
-}
-
-.flyout-foobar2 {
-    width: 250px;
-}
-
-.flyout-foobar3 p {
-    margin: 0;
-}
-
-.has-flyout {
-    margin: 2px;
-}
-
-/* alignto */
-
-.alignto {
-    overflow: hidden;
-    width: 120px;
-    margin: 0 auto 15px;
-}
-
-.alignto > div {
-    overflow: hidden;
-}
-
-.alignto > div > div {
-    float: left;
-    width: 30px;
-    height: 30px;
-}
-
-.alignto .alignto__clickable {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 1.4rem;
-    border-radius: 4px;
-}
-
-.alignto__clickable:hover {
-    background: #33C3F0;
-    color: white;
-}
-
-.alignto__clickable.alignto__clickable--topright i { transform: rotate(45deg); }
-.alignto__clickable.alignto__clickable--topleft i { transform: rotate(-45deg); }
-.alignto__clickable.alignto__clickable--righttop i { transform: rotate(-45deg); }
-.alignto__clickable.alignto__clickable--rightbottom i { transform: rotate(45deg); }
-.alignto__clickable.alignto__clickable--bottomright i { transform: rotate(-45deg); }
-.alignto__clickable.alignto__clickable--bottomleft i { transform: rotate(45deg); }
-.alignto__clickable.alignto__clickable--lefttop i { transform: rotate(45deg); }
-.alignto__clickable.alignto__clickable--leftbottom i { transform: rotate(-45deg); }
