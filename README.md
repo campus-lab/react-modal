@@ -45,7 +45,6 @@ react-modal was developed alongside react-flyout so it shares most of its struct
 + **modal.css**
     + CSS
 
-
 ### Why not dumb?
 
 The problem with these kind of componentes (dropdowns, modals, ...) is the need to handle window/body clicks in order to close. Why is this a problem? The lack of state (in this case) and the immutability of the props make it "impossible" to close itself.
@@ -59,7 +58,6 @@ Keep in mind that the **ModalWrapper** is optional, you can import the **Modal**
 ## USAGE
 
 The usage will depend on your projects architecture but will be something along these lines:
-
 
 ```html
 <button onClick={e => {dispatch(modalToggle('modal-foobar'))}}>ModalToggle</button>
