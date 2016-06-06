@@ -60,7 +60,12 @@ class ModalWrapper extends React.Component {
 
         if (e.target.getAttribute('data-modal') === 'close') this._close();
         if (aTrigger && aTrigger.getAttribute('data-modal') === 'keepopen') return false;
-        if (aTrigger) this.props.onWindowClick();
+        if (aTrigger) {
+            setTimeout(() => {
+                // let react behave normally and then close the modal
+                this.props.onWindowClick();
+            }, 0);
+        }
     }
 
     _handleKeyDown(e) {
