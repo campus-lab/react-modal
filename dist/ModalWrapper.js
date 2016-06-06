@@ -97,12 +97,19 @@ var ModalWrapper = function (_React$Component) {
     }, {
         key: '_handleClick',
         value: function _handleClick(e) {
+            var _this3 = this;
+
             // console.info('modal - _handleClick');
             var aTrigger = (0, _jsClosest2.default)(e.target, 'tag', 'a');
 
             if (e.target.getAttribute('data-modal') === 'close') this._close();
             if (aTrigger && aTrigger.getAttribute('data-modal') === 'keepopen') return false;
-            if (aTrigger) this.props.onWindowClick();
+            if (aTrigger) {
+                setTimeout(function () {
+                    // let react behave normally and then close the modal
+                    _this3.props.onWindowClick();
+                }, 0);
+            }
         }
     }, {
         key: '_handleKeyDown',
