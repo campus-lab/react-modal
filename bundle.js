@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "aa06fd98e5a6aae94101"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b699f0e4059ce6401d73"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21903,12 +21903,19 @@
 	    }, {
 	        key: '_handleClick',
 	        value: function _handleClick(e) {
+	            var _this3 = this;
+	
 	            // console.info('modal - _handleClick');
 	            var aTrigger = (0, _jsClosest2.default)(e.target, 'tag', 'a');
 	
 	            if (e.target.getAttribute('data-modal') === 'close') this._close();
 	            if (aTrigger && aTrigger.getAttribute('data-modal') === 'keepopen') return false;
-	            if (aTrigger) this.props.onWindowClick();
+	            if (aTrigger) {
+	                setTimeout(function () {
+	                    // let react behave normally and then close the modal
+	                    _this3.props.onWindowClick();
+	                }, 0);
+	            }
 	        }
 	    }, {
 	        key: '_handleKeyDown',
