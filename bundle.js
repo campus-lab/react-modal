@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c2d2a30ac974063d314b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "131c4da0b8d60873a53e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -50566,7 +50566,7 @@
 	        key: 'render',
 	        value: function render() {
 	            // console.info('modal - render');
-	            var title = this.props.title ? this.props.title : this.props.data.title ? this.props.data.title : false;
+	            var title = this.props.title ? this.props.title : this.props.data && this.props.data.title ? this.props.data.title : false;
 	            if (title) title = _react2.default.createElement(
 	                'div',
 	                { className: 'modal__header' },
