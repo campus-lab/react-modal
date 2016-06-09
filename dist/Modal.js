@@ -61,18 +61,16 @@ var ModalCore = function (_React$Component) {
         key: 'render',
         value: function render() {
             // console.info('modal - render');
-            var title = void 0;
-            if (this.props.title) {
-                title = _react2.default.createElement(
-                    'div',
-                    { className: 'modal__header' },
-                    _react2.default.createElement(
-                        'h2',
-                        { className: 'modal__title' },
-                        this.props.title
-                    )
-                );
-            }
+            var title = this.props.title ? this.props.title : this.props.data.title ? this.props.data.title : false;
+            if (title) title = _react2.default.createElement(
+                'div',
+                { className: 'modal__header' },
+                _react2.default.createElement(
+                    'h2',
+                    { className: 'modal__title' },
+                    title
+                )
+            );
 
             return _react2.default.createElement(
                 'div',
