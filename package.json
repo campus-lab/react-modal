@@ -9,7 +9,7 @@
     "modal",
     "dialog"
   ],
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "homepage": "https://github.com/alexandreneves/react-modal#readme",
   "main": "index.js",
