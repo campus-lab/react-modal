@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "131c4da0b8d60873a53e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "f3fa04b2f04d35c4758e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21927,7 +21927,7 @@
 	        key: '_close',
 	        value: function _close() {
 	            this.props.onWindowClick();
-	            if (this.props.onModalClose) this.props.onClose();
+	            if (this.props.onModalClose) this.props.onModalClose();
 	        }
 	    }]);
 	
