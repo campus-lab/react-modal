@@ -120,8 +120,8 @@ var ModalWrapper = function (_React$Component) {
     }, {
         key: '_close',
         value: function _close() {
-            this.props.onWindowClick();
             if (this.props.onModalClose) this.props.onModalClose();
+            this.props.onWindowClick();
         }
     }]);
 
