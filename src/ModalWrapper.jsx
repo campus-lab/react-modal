@@ -74,6 +74,7 @@ class ModalWrapper extends React.Component {
     }
 
     _close() {
+        // console.info('modal - _close');
         if (this.props.onModalClose) this.props.onModalClose();
         this.props.onWindowClick(); 
     }
