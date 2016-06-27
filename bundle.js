@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8134005a99a0d844e850"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "71864af6603c5e70d7c1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21926,6 +21926,7 @@
 	    }, {
 	        key: '_close',
 	        value: function _close() {
+	            // console.info('modal - _close');
 	            if (this.props.onModalClose) this.props.onModalClose();
 	            this.props.onWindowClick();
 	        }
@@ -50662,12 +50663,16 @@
 	        value: function _scrollPositionSave() {
 	            // console.info('modal - _scrollPositionSave');
 	            this.body.setAttribute('data-modalBodyScrollPosition', window.pageYOffset);
+	            this.body.style.position = 'relative';
+	            this.body.style.top = -window.pageYOffset;
 	        }
 	    }, {
 	        key: '_scrollPositionLoad',
 	        value: function _scrollPositionLoad() {
 	            // console.info('modal - _loadScrollPosition');
 	            window.scrollTo(window.pageYOffset, this.body.getAttribute('data-modalBodyScrollPosition'));
+	            this.body.style.position = '';
+	            this.body.style.top = '';
 	        }
 	    }]);
 	
