@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "71864af6603c5e70d7c1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7ef4c12af6b9d8dcc899"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21906,11 +21906,19 @@
 	            var _this3 = this;
 	
 	            // console.info('modal - _handleClick');
-	            var aTrigger = (0, _jsClosest2.default)(e.target, 'tag', 'a');
 	
-	            if (e.target.getAttribute('data-modal') === 'close') this._close();
-	            if (aTrigger && aTrigger.getAttribute('data-modal') === 'keepopen') return false;
+	            // data-modal === close
+	            if (e.target.getAttribute('data-modal') === 'close') {
+	                if (e.target.classList.contains('modal') && !this.props.closeOnBackdrop) return;
+	                this._close();
+	                return;
+	            }
+	
+	            // <a> clicks
+	            var aTrigger = (0, _jsClosest2.default)(e.target, 'tag', 'a');
 	            if (aTrigger) {
+	                if (aTrigger.getAttribute('data-modal') === 'keepopen') return;
+	
 	                setTimeout(function () {
 	                    // let react behave normally and then close the modal
 	                    _this3.props.onWindowClick();
@@ -21940,14 +21948,16 @@
 	    title: _react2.default.PropTypes.string,
 	    open: _react2.default.PropTypes.bool,
 	    onModalClose: _react2.default.PropTypes.func,
-	    onModalUnmount: _react2.default.PropTypes.func
+	    onModalUnmount: _react2.default.PropTypes.func,
+	    closeOnBackdrop: _react2.default.PropTypes.bool
 	};
 	
 	ModalWrapper.defaultProps = {
 	    title: null,
 	    open: false,
 	    onModalClose: null,
-	    onModalUnmount: null
+	    onModalUnmount: null,
+	    closeOnBackdrop: true
 	};
 	
 	exports.default = ModalWrapper;
@@ -21961,7 +21971,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".has-modal {\n  position: fixed;\n  overflow: hidden;\n  width: 100%; }\n\n.modal {\n  overflow: auto;\n  z-index: 8000;\n  position: fixed;\n  top: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  padding: 20px 0;\n  background: rgba(0, 0, 0, 0.9);\n  text-align: left; }\n  .modal .modal__wrapper {\n    padding: 1.5rem;\n    background: white;\n    font-size: 0.9rem; }\n    .modal .modal__wrapper .modal__header {\n      padding: 0 2rem 2.5rem 0; }\n      .modal .modal__wrapper .modal__header .modal__title {\n        margin: 0; }\n    .modal .modal__wrapper .modal__footer {\n      margin-top: 35px; }\n      .modal .modal__wrapper .modal__footer.modal__buttons-right {\n        text-align: right; }\n  .modal .modal__close {\n    position: absolute;\n    top: -4px;\n    right: 8px;\n    color: white;\n    line-height: 1;\n    font-size: 40px;\n    font-style: initial;\n    text-shadow: 0 0 1px black;\n    cursor: pointer; }\n\n/*\n *\n * MEDIA QUERIES\n */\n@media screen and (max-width: 639px) {\n  .modal {\n    align-items: flex-start;\n    padding: 0; }\n    .modal .modal__wrapper {\n      width: 100% !important;\n      min-height: 100%; }\n    .modal .modal__close {\n      color: #444; } }\n", ""]);
+	exports.push([module.id, ".has-modal {\n  position: fixed;\n  overflow: hidden;\n  width: 100%; }\n\n.modal {\n  overflow: auto;\n  z-index: 8000;\n  position: fixed;\n  top: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  padding: 20px 0;\n  background: rgba(0, 0, 0, 0.9);\n  text-align: left; }\n  .modal.modal--close-on-backdrop {\n    cursor: not-allowed; }\n  .modal .modal__wrapper {\n    padding: 1.5rem;\n    background: white;\n    font-size: 0.9rem; }\n    .modal .modal__wrapper .modal__header {\n      padding: 0 2rem 2.5rem 0; }\n      .modal .modal__wrapper .modal__header .modal__title {\n        margin: 0; }\n    .modal .modal__wrapper .modal__footer {\n      margin-top: 35px; }\n      .modal .modal__wrapper .modal__footer.modal__buttons-right {\n        text-align: right; }\n  .modal .modal__close {\n    position: absolute;\n    top: -4px;\n    right: 8px;\n    color: white;\n    line-height: 1;\n    font-size: 40px;\n    font-style: initial;\n    text-shadow: 0 0 1px black;\n    cursor: pointer; }\n\n/*\n *\n * MEDIA QUERIES\n */\n@media screen and (max-width: 639px) {\n  .modal {\n    align-items: flex-start;\n    padding: 0; }\n    .modal .modal__wrapper {\n      width: 100% !important;\n      min-height: 100%; }\n    .modal .modal__close {\n      color: #444; } }\n", ""]);
 	
 	// exports
 
@@ -50578,9 +50588,13 @@
 	                )
 	            );
 	
+	            var classes = [this.props.id, 'modal'];
+	            if (!this.props.closeOnBackdrop) classes.push('modal--close-on-backdrop');
+	            classes = classes.join(' ');
+	
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'modal ' + this.props.id, 'data-modal': 'close' },
+	                { className: classes, 'data-modal': 'close' },
 	                _react2.default.createElement(
 	                    'div',
 	                    { className: 'modal__wrapper' },
