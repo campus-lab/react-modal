@@ -38,6 +38,7 @@ $font_size: 0.9rem;
         padding: 1.5rem;
         background: white;
         font-size: $font_size;
+        cursor: pointer; // modal--close-on-backdrop
 
         .modal__header {
             padding: 0 2rem 2.5rem 0;
