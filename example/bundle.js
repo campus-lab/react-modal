@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "de6f2ec1d27d16234e94"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9e89b5a8b80bd20f7c92"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21971,7 +21971,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".has-modal {\n  position: fixed;\n  overflow: hidden;\n  width: 100%; }\n\n.modal {\n  overflow: auto;\n  z-index: 8000;\n  position: fixed;\n  top: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  padding: 20px 0;\n  background: rgba(0, 0, 0, 0.9);\n  text-align: left; }\n  .modal.modal--close-on-backdrop {\n    cursor: not-allowed; }\n  .modal .modal__wrapper {\n    padding: 1.5rem;\n    background: white;\n    font-size: 0.9rem;\n    cursor: pointer; }\n    .modal .modal__wrapper .modal__header {\n      padding: 0 2rem 2.5rem 0; }\n      .modal .modal__wrapper .modal__header .modal__title {\n        margin: 0; }\n    .modal .modal__wrapper .modal__footer {\n      margin-top: 35px; }\n      .modal .modal__wrapper .modal__footer.modal__buttons-right {\n        text-align: right; }\n  .modal .modal__close {\n    position: absolute;\n    top: -4px;\n    right: 8px;\n    color: white;\n    line-height: 1;\n    font-size: 40px;\n    font-style: initial;\n    text-shadow: 0 0 1px black;\n    cursor: pointer; }\n\n/*\n *\n * MEDIA QUERIES\n */\n@media screen and (max-width: 639px) {\n  .modal {\n    align-items: flex-start;\n    padding: 0; }\n    .modal .modal__wrapper {\n      width: 100% !important;\n      min-height: 100%; }\n    .modal .modal__close {\n      color: #444; } }\n", ""]);
+	exports.push([module.id, ".has-modal {\n  position: fixed;\n  overflow: hidden;\n  width: 100%; }\n\n.modal {\n  overflow: auto;\n  z-index: 8000;\n  position: fixed;\n  top: 0;\n  left: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  padding: 20px 0;\n  background: rgba(0, 0, 0, 0.9);\n  text-align: left; }\n  .modal.modal--close-on-backdrop {\n    cursor: not-allowed; }\n  .modal .modal__wrapper {\n    padding: 1.5rem;\n    background: white;\n    font-size: 0.9rem;\n    cursor: default; }\n    .modal .modal__wrapper .modal__header {\n      padding: 0 2rem 2.5rem 0; }\n      .modal .modal__wrapper .modal__header .modal__title {\n        margin: 0; }\n    .modal .modal__wrapper .modal__footer {\n      margin-top: 35px; }\n      .modal .modal__wrapper .modal__footer.modal__buttons-right {\n        text-align: right; }\n  .modal .modal__close {\n    position: absolute;\n    top: -4px;\n    right: 8px;\n    color: white;\n    line-height: 1;\n    font-size: 40px;\n    font-style: initial;\n    text-shadow: 0 0 1px black;\n    cursor: pointer; }\n\n/*\n *\n * MEDIA QUERIES\n */\n@media screen and (max-width: 639px) {\n  .modal {\n    align-items: flex-start;\n    padding: 0; }\n    .modal .modal__wrapper {\n      width: 100% !important;\n      min-height: 100%; }\n    .modal .modal__close {\n      color: #444; } }\n", ""]);
 	
 	// exports
 
