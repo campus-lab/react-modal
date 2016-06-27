@@ -101,7 +101,7 @@ ModalWrapper.defaultProps = {
     title: null,
     open: false,
     onModalClose: null,
-    onModalUnmount: null
+    onModalUnmount: null,
     closeOnBackdrop: true
 };
 
