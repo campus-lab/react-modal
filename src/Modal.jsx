@@ -36,8 +36,12 @@ class ModalCore extends React.Component {
         let title = this.props.title ? this.props.title : this.props.data && this.props.data.title ? this.props.data.title : false;
         if (title) title = <div className="modal__header"><h2 className="modal__title">{title}</h2></div>
 
+        let classes = [this.props.id, 'modal'];
+        if (!this.props.closeOnBackdrop) classes.push('modal--close-on-backdrop');
+        classes = classes.join(' ');
+
         return (
-            <div className={`modal ${this.props.id}`} data-modal="close">
+            <div className={classes} data-modal="close">
                 <div className="modal__wrapper">
                     {title}
                     <div className="modal__body">

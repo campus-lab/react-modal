@@ -30,6 +30,10 @@ $font_size: 0.9rem;
 
     text-align: left;
 
+    &.modal--close-on-backdrop {
+        cursor: not-allowed;
+    }
+
     .modal__wrapper {
         padding: 1.5rem;
         background: white;
