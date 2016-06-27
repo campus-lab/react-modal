@@ -72,9 +72,13 @@ var ModalCore = function (_React$Component) {
                 )
             );
 
+            var classes = [this.props.id, 'modal'];
+            if (!this.props.closeOnBackdrop) classes.push('modal--close-on-backdrop');
+            classes = classes.join(' ');
+
             return _react2.default.createElement(
                 'div',
-                { className: 'modal ' + this.props.id, 'data-modal': 'close' },
+                { className: classes, 'data-modal': 'close' },
                 _react2.default.createElement(
                     'div',
                     { className: 'modal__wrapper' },

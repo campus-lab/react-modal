@@ -17,6 +17,8 @@
   padding: 20px 0;
   background: rgba(0, 0, 0, 0.9);
   text-align: left; }
+  .modal.modal--close-on-backdrop {
+    cursor: not-allowed; }
   .modal .modal__wrapper {
     padding: 1.5rem;
     background: white;

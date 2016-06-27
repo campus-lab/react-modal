@@ -100,11 +100,19 @@ var ModalWrapper = function (_React$Component) {
             var _this3 = this;
 
             // console.info('modal - _handleClick');
-            var aTrigger = (0, _jsClosest2.default)(e.target, 'tag', 'a');
 
-            if (e.target.getAttribute('data-modal') === 'close') this._close();
-            if (aTrigger && aTrigger.getAttribute('data-modal') === 'keepopen') return false;
+            // data-modal === close
+            if (e.target.getAttribute('data-modal') === 'close') {
+                if (e.target.classList.contains('modal') && !this.props.closeOnBackdrop) return;
+                this._close();
+                return;
+            }
+
+            // <a> clicks
+            var aTrigger = (0, _jsClosest2.default)(e.target, 'tag', 'a');
             if (aTrigger) {
+                if (aTrigger.getAttribute('data-modal') === 'keepopen') return;
+
                 setTimeout(function () {
                     // let react behave normally and then close the modal
                     _this3.props.onWindowClick();
@@ -134,14 +142,16 @@ ModalWrapper.propTypes = {
     title: _react2.default.PropTypes.string,
     open: _react2.default.PropTypes.bool,
     onModalClose: _react2.default.PropTypes.func,
-    onModalUnmount: _react2.default.PropTypes.func
+    onModalUnmount: _react2.default.PropTypes.func,
+    closeOnBackdrop: _react2.default.PropTypes.bool
 };
 
 ModalWrapper.defaultProps = {
     title: null,
     open: false,
     onModalClose: null,
-    onModalUnmount: null
+    onModalUnmount: null,
+    closeOnBackdrop: true
 };
 
 exports.default = ModalWrapper;
