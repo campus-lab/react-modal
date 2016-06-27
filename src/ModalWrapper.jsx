@@ -56,11 +56,19 @@ class ModalWrapper extends React.Component {
 
     _handleClick(e) {
         // console.info('modal - _handleClick');
-        const aTrigger = Closest(e.target, 'tag', 'a');
 
-        if (e.target.getAttribute('data-modal') === 'close') this._close();
-        if (aTrigger && aTrigger.getAttribute('data-modal') === 'keepopen') return false;
+        // data-modal === close
+        if (e.target.getAttribute('data-modal') === 'close') {
+            if (e.target.classList.contains('modal') && !this.props.closeOnBackdrop) return;
+            this._close();
+            return;
+        }
+
+        // <a> clicks
+        const aTrigger = Closest(e.target, 'tag', 'a');
         if (aTrigger) {
+            if (aTrigger.getAttribute('data-modal') === 'keepopen') return;
+
             setTimeout(() => {
                 // let react behave normally and then close the modal
                 this.props.onWindowClick();
@@ -85,7 +93,8 @@ ModalWrapper.propTypes = {
     title: React.PropTypes.string,
     open: React.PropTypes.bool,
     onModalClose: React.PropTypes.func,
-    onModalUnmount: React.PropTypes.func
+    onModalUnmount: React.PropTypes.func,
+    closeOnBackdrop: React.PropTypes.bool
 };
 
 ModalWrapper.defaultProps = {
@@ -93,6 +102,7 @@ ModalWrapper.defaultProps = {
     open: false,
     onModalClose: null,
     onModalUnmount: null
+    closeOnBackdrop: true
 };
 
 export default ModalWrapper;
