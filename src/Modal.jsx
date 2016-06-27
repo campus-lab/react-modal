@@ -104,11 +104,15 @@ class ModalCore extends React.Component {
     _scrollPositionSave() {
         // console.info('modal - _scrollPositionSave');
         this.body.setAttribute('data-modalBodyScrollPosition', window.pageYOffset);
+        this.body.style.position = 'relative';
+        this.body.style.top = - window.pageYOffset;
     }
 
     _scrollPositionLoad() {
         // console.info('modal - _loadScrollPosition');
         window.scrollTo(window.pageYOffset, this.body.getAttribute('data-modalBodyScrollPosition'));
+        this.body.style.position = '';
+        this.body.style.top = '';
     }
 };
 
