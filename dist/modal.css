@@ -22,7 +22,8 @@
   .modal .modal__wrapper {
     padding: 1.5rem;
     background: white;
-    font-size: 0.9rem; }
+    font-size: 0.9rem;
+    cursor: pointer; }
     .modal .modal__wrapper .modal__header {
       padding: 0 2rem 2.5rem 0; }
       .modal .modal__wrapper .modal__header .modal__title {
