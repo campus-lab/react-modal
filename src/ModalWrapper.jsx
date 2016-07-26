@@ -24,12 +24,15 @@ class ModalWrapper extends React.Component {
         // console.info('modal - componentDidUpdate');
         if (prevProps.open === this.props.open) return false;
         if (!this.props.onWindowClick) return false;
-        this._setClickEvent();
+        if (this.props.open) {
+            this._setClickEvent();
+        } else {
+            this._unsetClickEvent();
+        }
     }
 
     render() {
         // console.info('modal - render');
-        this._setClickEvent();
         if (!this.props.open) return null;
         return <Modal {...this.props} data={this.props.data} />;
     }
