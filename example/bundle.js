@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9e89b5a8b80bd20f7c92"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2f30b4c24bb6d6fa1bd4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21866,13 +21866,16 @@
 	            // console.info('modal - componentDidUpdate');
 	            if (prevProps.open === this.props.open) return false;
 	            if (!this.props.onWindowClick) return false;
-	            this._setClickEvent();
+	            if (this.props.open) {
+	                this._setClickEvent();
+	            } else {
+	                this._unsetClickEvent();
+	            }
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            // console.info('modal - render');
-	            this._setClickEvent();
 	            if (!this.props.open) return null;
 	            return _react2.default.createElement(_Modal2.default, _extends({}, this.props, { data: this.props.data }));
 	        }

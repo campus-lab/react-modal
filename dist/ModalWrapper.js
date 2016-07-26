@@ -60,13 +60,16 @@ var ModalWrapper = function (_React$Component) {
             // console.info('modal - componentDidUpdate');
             if (prevProps.open === this.props.open) return false;
             if (!this.props.onWindowClick) return false;
-            this._setClickEvent();
+            if (this.props.open) {
+                this._setClickEvent();
+            } else {
+                this._unsetClickEvent();
+            }
         }
     }, {
         key: 'render',
         value: function render() {
             // console.info('modal - render');
-            this._setClickEvent();
             if (!this.props.open) return null;
             return _react2.default.createElement(_Modal2.default, _extends({}, this.props, { data: this.props.data }));
         }
